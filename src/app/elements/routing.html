@@ -30,6 +30,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     page('/contact', function () {
       app.route = 'contact';
       app.scrollPageToTop();
+    }); 
+      
+    page('*', function () {
+      app.route = 'devices';
     });
     
     try {

@@ -70,8 +70,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <span class="flex"></span>
 
           <!-- Toolbar icons -->
-          <paper-icon-button icon="refresh"></paper-icon-button>
-          <paper-icon-button icon="search"></paper-icon-button>
+          <paper-icon-button icon="refresh" on-click="onRefreshClick"></paper-icon-button>
 
           <!-- Application name -->
           <div class="middle middle-container center horizontal layout">
@@ -94,6 +93,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <h2 class="page-title">Devices</h2>
                 <p>We found devices below</p>
               </paper-material>
+              
+              <eddystone-scanner id="scanner"></eddystone-scanner>
             </section>
 
             <section data-route="user-info">
@@ -108,7 +109,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <section data-route="contact">
               <paper-material elevation="1">
                 <h2 class="page-title">Contact</h2>
-                <p>This is the contact section</p>
+                <p>NPM: <a href="https://www.npmjs.com/package/mca-eddystone-beacon-scanner">mca-eddystone-beacon-scanner</a></p>
+                <p>Github: <a href="https://github.com/ragingwind/mca-eddystone-beacon-scanner">mca-eddystone-beacon-scanner</a></p>
+                <p>Written by <a href="mailto:ragingwind@gmail.com">Jimmy Moon</a></p>
               </paper-material>
             </section>
 
@@ -116,6 +119,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </div>
       </paper-scroll-header-panel>
     </paper-drawer-panel>
+    
+    <paper-toast id="toast" text="Beacon scanning has been complete"></paper-toast>
   </template>
 
   <!-- build:js scripts/app.js -->

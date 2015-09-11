@@ -4,15 +4,8 @@
   'use strict';
 
   var app = document.querySelector('#app');
-
+    
   app.addEventListener('dom-change', function() {
-    console.log(window.device);
-    // ble.scan([], 5, function(device) {
-    //   console.log(device);
-    // }, function(err) {
-    //   console.error(err);
-    // });
-
   });
 
   window.addEventListener('WebComponentsReady', function() {
@@ -51,6 +44,12 @@
   // Scroll page to top and expand header
   app.scrollPageToTop = function() {
     document.getElementById('mainContainer').scrollTop = 0;
+  };
+
+  app.onRefreshClick = function () {
+    document.getElementById('scanner').startScan(5, function () {
+      document.getElementById('toast').show();
+    });
   };
   
 })(document);
