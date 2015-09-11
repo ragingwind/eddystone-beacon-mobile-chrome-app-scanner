@@ -1,0 +1,83 @@
+<dom-module id="eddystone-scanner">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+      
+      paper-card {
+        border-radius: 2px;
+        height: 100%;
+        width: 100%;
+        margin: 16px auto;
+        background: white;
+        padding-left: 6px;
+        padding-right: 6px;
+      }
+    </style>
+    <div>
+      <template is="dom-repeat" items="{{beacons}}">
+        <paper-card heading="{{item.id}}">
+          <div class="card-content">
+            <div>URL: <span><a href="{{item.url}}">{{item.url}}</a></span></div>
+            <div>TX Power: <span>{{item.txPower}}</span></div>
+            <div>RSSI: <span>{{item.rssi}}</span></div>
+          </div>
+        </paper-card>    
+      </template>
+    </div>
+  </template>
+
+  <script>
+    (function () {
+      Polymer({
+        is: 'eddystone-scanner',
+        isScanning: false,
+        stopScan: function (done) {
+          clearTimeout(this.scanTimer);
+          this.scanTimer = null;
+          
+          ble.stopScan(done, done);
+        },
+        startScan: function (timeout, done) {
+          var _this = this;
+          
+          if (_this.scanTimer) {
+            _this.stopScan();
+          }
+          
+          _this.beacons = [];
+          _this.scanTimer = setTimeout(function () {
+            _this.stopScan(done);
+          }, timeout * 1000);
+          
+          ble.startScan([], function(peripheral) {
+            var urltype = 0x10;
+            var p = new Uint8Array(peripheral.advertising);
+            
+            // check eddystone advertising packet
+            if (!(p[0] === 0x02 && p[3] === 0x03 && p[5] === 0xAA && 
+                  p[6] === 0xFE && p[9] === 0xAA && p[10] === 0xFE) ||
+                  p[11] !== urltype) {
+              return;
+            }
+            
+            var txPower = p[12];
+            var scheme = ['http://www.', 'https://www.', 'http://', 'https://'][p[13]] || '';
+            
+            _this.push('beacons', {
+              id: peripheral.id,
+              rssi: peripheral.rssi,
+              txPower: txPower,
+              url: scheme + String.fromCharCode.apply(null, p.subarray(14))
+            });
+          });
+        },
+        ready: function() {
+          this.beacons = [];
+        }
+      });
+    })();
+  </script>
+
+</dom-module>
