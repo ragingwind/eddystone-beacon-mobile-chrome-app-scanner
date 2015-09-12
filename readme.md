@@ -11,7 +11,7 @@
 npm install
 
 # Build
-npm build
+npm run build # make sure that all of cordova plugins should be installed
 
 # Run
 npm run android # or chrome
