@@ -74,6 +74,9 @@
           });
         },
         ready: function() {
+          if (!ble) {
+            throw new Error('BLE plugin is not able to find');
+          }
           this.beacons = [];
         }
       });
