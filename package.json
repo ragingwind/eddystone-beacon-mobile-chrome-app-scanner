@@ -1,8 +1,8 @@
 {
-  "name": "mca-eddystone-beacon-scanner",
+  "name": "eddystone-beacon-mobile-chrome-app-scanner",
   "version": "0.1.0",
   "description": "Eddystone Beacon Scanner which is kind of hybrid apps, is made up of Web Technologies like Mobile Chrome Apps and Polymer Starter Kit",
-  "repository": "ragingwind/eddystone-beacon-electron-emulator",
+  "repository": "ragingwind/eddystone-beacon-mobile-chrome-app-scanner",
   "author": {
     "name": "ragingwind",
     "email": "ragingwind@gmail.com",

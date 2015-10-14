@@ -1,4 +1,4 @@
-# Eddystone Beacon Scanner for Mobile Chrome Apps
+# Eddystone Beacon Mobile Chrome App Scanner
 
 ![screenshot_2015-09-11-19-11-17](https://cloud.githubusercontent.com/assets/124117/9812824/15ec3b4a-58bb-11e5-8931-5781303f33ca.png)
 
