@@ -2,6 +2,18 @@
   "name": "mca-eddystone-beacon-scanner",
   "version": "0.1.0",
   "description": "Eddystone Beacon Scanner which is kind of hybrid apps, is made up of Web Technologies like Mobile Chrome Apps and Polymer Starter Kit",
+  "repository": "ragingwind/eddystone-beacon-electron-emulator",
+  "author": {
+    "name": "ragingwind",
+    "email": "ragingwind@gmail.com",
+    "url": "ragingwind.me"
+  },
+  "keywords": [
+    "eddystone",
+    "eddystone-beacon",
+    "Chrome Apps",
+    "Mobile Chrome Apps"
+  ],
   "devDependencies": {
     "cordova-config-cli": "^0.1.0",
     "del": "^2.0.0",
